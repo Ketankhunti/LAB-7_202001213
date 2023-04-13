@@ -580,7 +580,7 @@ public class LinearSearchTest {
 </table>
 </br>
 
-b) Test cases:
+**b) Test cases:**
 
 Invalid inputs: a = 0, b = 0, c = 0, a + b = c, b + c = a, c + a = b
 Invalid inputs: a = -1, b = 1, c = 1, a + b = c
@@ -623,83 +623,45 @@ a = 0, b = 1, c = 2
 </br>
 
 # Section B
-1. Control Flow Graph (CFG):
-```
-        +-----+
-        | i = 1|
-        +-----+
-           |
-           |
-           v
-+---------------+
-| i < p.size()   |
-+---------------+
-     | true
-     |
-     v
-+-----------------------+
-| ((Point)p.get(i)).y < ((Point)p.get(min)).y |
-+-----------------------+
-    | true        | false
-    |             |
-    v             v
-+---------------+    +---------------+
-| min = i       |    | i++           |
-+---------------+    +---------------+
-     |                   |
-     |                   |
-     v                   v
-+---------------+    +---------------+
-| i < p.size()   |    | return doStack(p) |
-+---------------+    +---------------+
-     | false             |
-     |                   |
-     v                   v
-+------------------------+
-| ((Point)p.get(i)).y == ((Point)p.get(min)).y |
-+------------------------+
-        | true           | false
-        |                |
-        v                v
-+------------------------+  +---------------+
-| ((Point)p.get(i)).x > ((Point)p.get(min)).x|
-+------------------------+  +---------------+
-        | true           | false
-        |                |
-        v                v
-+---------------+    +---------------+
-| min = i       |    | i++           |
-+---------------+    +---------------+
-        |                |
-        |                |
-        v                v
-+---------------+    +---------------+
-| i < p.size()   |    | return doStack(p) |
-+---------------+    +---------------+
-        | false            |
-        |                  |
-        v                  v
-+--------------------------+
-| return doStack(p)         |
-+--------------------------+
-```
+**1. Control Flow Graph (CFG)**:
+
+![control-flow-diagram drawio](https://user-images.githubusercontent.com/75673068/231425222-27f0cc54-8a37-41a1-8d0f-b57b1db680a2.png)
 
 
-2. Test sets for each coverage criterion:
+2. **Test sets for each coverage criterion**:<br>
 
-a. Statement Coverage:
-- Test 1: p = {new Point(0, 0), new Point(1, 1)}
-- Test 2: p = {new Point(0, 0), new Point(1, 0), new Point(2, 0)}
 
-b. Branch Coverage:
-- Test 1: p = {new Point(0, 0), new Point(1, 1)}
-- Test 2: p = {new Point(0, 0), new Point(1, 0), new Point(2, 0)}
-- Test 3: p = {new Point(0, 0), new Point(1, 0), new Point(1, 1)}
+**a) Statement coverage test sets:** To achieve statement coverage, we need to make sure that every statement in the code is executed at least once.
+<br>
+* Test 1: p = empty vector
+* Test 2: p = vector with one point
+* Test 3: p = vector with two points with the same y component
+* Test 4: p = vector with two points with different y components
+* Test 5: p = vector with three or more points with different y components
+* Test 6: p = vector with three or more points with the same y component
 
-c. Basic Condition Coverage:
-- Test 1: p = {new Point(0, 0), new Point(1, 1)}
-- Test 2: p = {new Point(0, 0), new Point(1, 0), new Point(2, 0)}
-- Test 3: p = {new Point(0, 0), new Point(1, 0), new Point(1, 1)}
-- Test 4: p = {new Point(0, 0), new Point(1, 0), new Point(0, 1)}
-- Test 5: p = {new Point(0, 0), new Point(0, 1), new Point(1, 1)}
-```
+<br>
+
+**b) Branch coverage test sets:** To achieve branch coverage, we need to make sure that every possible branch in the code is taken at least once
+<br>
+* Test 1: p = empty vector
+* Test 2: p = vector with one point
+* Test 3: p = vector with two points with the same y component
+* Test 4: p = vector with two points with different y components
+* Test 5: p = vector with three or more points with different y components, and none of them have the same x component
+* Test 6: p = vector with three or more points with the same y component, and some of them have the same x component
+* Test 7: p = vector with three or more points with the same y component, and all of them have the same x component
+
+<br>
+
+**c) Basic condition coverage test sets:** To achieve basic condition coverage, we need to make sure that every basic condition in the code (i.e., every Boolean subexpression) is evaluated as both true and false at least once
+<br>
+* Test 1: p = empty vector
+* Test 2: p = vector with one point
+* Test 3: p = vector with two points with the same y component, and the first point has a smaller x component
+* Test 4: p = vector with two points with the same y component, and the second point has a smaller x component
+* Test 5: p = vector with two points with different y components
+* Test 6: p = vector with three or more points with different y components, and none of them have the same x component
+* Test 7: p = vector with three or more points with the same y component, and some of them have the same x component
+* Test 8: p = vector with three or more points with the same y component, and all of them have the same x component.
+
