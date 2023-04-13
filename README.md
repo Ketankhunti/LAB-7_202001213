@@ -4,7 +4,51 @@
 
 # Section A
 
-Equivalence Partitioning Test Cases:
+### Equivalence Partitioning Test Cases:
+
+```
+package tests;
+
+import static org.junit.Assert.assertEquals;
+
+import java.time.LocalDate;
+
+import org.junit.Test;
+
+public class PreviousDateTest {
+
+	@Test
+	public void test() {
+		   // Test case 1: Valid input
+        int day1 = 1, month1 = 1, year1 = 1900;
+        LocalDate expected1 = LocalDate.of(1899, 12, 31);
+        LocalDate result1 = PreviousDate.getPreviousDate(day1, month1, year1);
+        assertEquals(expected1,result1);
+
+        // Test case 2: Invalid day
+        int day2 = 32, month2 = 12, year2 = 2023;
+        LocalDate expected2 = null;
+        LocalDate result2 = PreviousDate.getPreviousDate(day2, month2, year2);
+        assert result2 == expected2;
+
+        // Test case 3: Invalid month
+        int day3 = 15, month3 = 13, year3 = 2024;
+        LocalDate expected3 = null;
+        LocalDate result3 = PreviousDate.getPreviousDate(day3, month3, year3);
+        assert result3 == expected3;
+
+        // Test case 4: Invalid years
+        int day4 = 1, month4 = 1, year4 = 1800;
+        LocalDate expected4 = null;
+        LocalDate result4 = PreviousDate.getPreviousDate(day4, month4, year4);
+        assert result4 == expected4;
+	}
+
+}
+
+
+
+```
 
 <table>
   <tr>
@@ -212,6 +256,48 @@ public class LinearSearchTest {
 
 ### Problem 2 :
 
+```
+package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class CountItemTest {
+
+	@Test
+	  public void testValueCount() {
+	    int[] arr = {1, 2, 2, 4, 5};
+	    int count = CountItem.countItem(2, arr);
+	    assertEquals(2, count);
+	  }
+	
+	@Test
+	  public void testValueCount2() {
+	    int[] arr = {1, 2, 2, 4,5,4,5,6,7,5,3,4};
+	    int count = CountItem.countItem(4, arr);
+	    assertEquals(3, count);
+	  }
+	
+	@Test
+	  public void testEmptyArray() {
+	    int[] arr = {};
+	    int count = CountItem.countItem(5, arr);
+	    assertEquals(0, count);
+	  }
+	
+	@Test
+	  public void testEmptyArray2() {
+	    int[] arr = {};
+	    int count = CountItem.countItem(1, arr);
+	    assertEquals(1, count);
+	  }
+
+}
+
+
+```
+
 ### Equivalence Partitioning:
 
 <table>
@@ -293,6 +379,47 @@ public class LinearSearchTest {
 
 ### Problem 3 :
 
+```
+package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class BinarySearchTest {
+
+	@Test
+	  public void test1() {
+	    int[] arr = {1, 2, 3, 4, 5,10,12};
+	    int valueIdx = BinarySearch.binarySearch(5, arr);
+	    assertEquals(4, valueIdx);
+	  }
+	
+	@Test
+	  public void test2() {
+	    int[] arr = {1, 2, 3, 4, 5,10,12};
+	    int valueIdx = BinarySearch.binarySearch(12, arr);
+	    assertEquals(6, valueIdx);
+	  }
+	
+	@Test
+	  public void test3() {
+	    int[] arr = {1, 2, 3, 4, 5,10,12};
+	    int valueIdx = BinarySearch.binarySearch(6, arr);
+	    assertEquals(0, valueIdx);
+	  }
+	
+	@Test
+	  public void test4() {
+	    int[] arr = {};
+	    int valueIdx = BinarySearch.binarySearch(4, arr);
+	    assertEquals(-1, valueIdx);
+	  }
+	
+}
+
+```
+
 ### Equivalence Partitioning:
 
 <table>
@@ -353,6 +480,54 @@ public class LinearSearchTest {
 </br>
 
 ### Problem 4 :
+
+```
+package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TriangleTest {
+
+	 // invalid output
+	@Test
+	  public void test1() {
+	    int valueIdx =Triangle.triangle(0,0,0);
+	    assertEquals(3, valueIdx);
+	  }
+
+	//invalid
+	@Test
+	  public void test2() {
+	    int valueIdx =Triangle.triangle(3,4,8);
+	    assertEquals(3, valueIdx);
+	  }
+	
+	 // equilateral
+	@Test
+	  public void tes3() {
+	    int valueIdx =Triangle.triangle(100,100,100);
+	    assertEquals(0, valueIdx);
+	  }
+	
+	// isosceles
+	@Test
+	  public void test4() {
+	    int valueIdx =Triangle.triangle(4,4,5);
+	    assertEquals(1, valueIdx);
+	  }
+	
+	//scalene
+	@Test
+	  public void test5() {
+	    int valueIdx =Triangle.triangle(5,4,3);
+	    assertEquals(2, valueIdx);
+	  }
+}
+
+
+```
 
 ### Boundary Value Analysis:
 
@@ -466,6 +641,51 @@ public class LinearSearchTest {
 </br>
 
 ### Problem 5 :
+
+```
+package tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class PrefixStringTest {
+
+	@Test
+	public void test1() {
+		String s1 = "ketanmer";
+		String s2 = "ketan";
+		boolean isPrefix = PrefixString.prefix(s1, s2);
+		assertEquals(true,isPrefix);
+	}
+	
+	@Test
+	public void test2() {
+		String s1 = "ketanmer";
+		String s2 = "ketan";
+		boolean isPrefix = PrefixString.prefix(s1, s2);
+		assertEquals(false,isPrefix);
+	}
+	
+	@Test
+	public void test3() {
+		String s1 = "ketanmer";
+		String s2 = "mer";
+		boolean isPrefix = PrefixString.prefix(s1, s2);
+		assertEquals(false,isPrefix);
+	}
+	
+	@Test
+	public void test4() {
+		String s1 = "ketanmer";
+		String s2 = "mer";
+		boolean isPrefix = PrefixString.prefix(s1, s2);
+		assertEquals(true,isPrefix);
+	}
+
+}
+
+```
 
 ### Equivalence Partitioning:
 <table>
